@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<h2>Hyper news</h2>
+    <form method="get">
+        {% csrf_token %}
+        <input type="text" name="q">
+        <button type="submit">Search</button>
+    </form>
+    {% for time, list in articles.items %}
+    <h4>{{ time|date:'Y-m-d' }}</h4>
+    <ul>
+        {% for items in list %}
+      <li><a href="/news/{{ items.0 }}/">{{ items.1 }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+    <a target="_blank" href="/news/create/">Create</a>
+</body>
+</html>

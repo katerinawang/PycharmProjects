@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>Change oil queue: {{ queue.0 }}</div>
+    <div>Inflate tires queue: {{ queue.1 }}</div>
+    <div>Get diagnostic queue: {{ queue.2 }}</div>
+
+    <form method="post">{% csrf_token %}
+      <button type="submit">Process next</button>
+    </form>
+</body>
+</html>
